@@ -1,0 +1,156 @@
+<!------------------------------------------------------------------------------------------------------------------------------------>
+<!--                                           Author    : Mouhanad Ahmed                                                           -->
+<!--                                           Languages : HTML + CSS + Bootstrap + Js                                              -->
+<!--                                           Date      : 18/2/2023                                                                -->
+<!------------------------------------------------------------------------------------------------------------------------------------>
+<!DOCTYPE html>
+<html lang                            = "en-us">
+<head>
+    <meta charset                     = "UTF-8">
+    <meta name                        = "viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel                         = "stylesheet" href="/CSS/all.min.css">
+    <link href                        = "css/bootstrap.min.css" rel="stylesheet" >
+    <link rel                         = "stylesheet" href="css/style.css">
+    <title>Weather - Assignment 11</title>
+</head>
+<body >
+
+<!------------------------------------------------------------------------------------------------------------------------------------>
+<!-- //SECTION - Navbar Start -->
+    <nav class="navbar navbar-dark navbar-expand-lg py-5">
+        <div class="container ">
+            <div class="logo">
+                <a  href="index.html">
+                    <img  src="/images/logo@2x.png" alt="logo">
+                    </a>
+                </div>
+                    <div class="logo-text">
+                        <a class="navbar-brand text-white" href="#">Weather</a>
+                        <h5 class=" text-white"> tagline goes here</h5>
+                    </div>
+            
+          <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+            <ul class="navbar-nav pe-3 ms-auto mb-2 mb-lg-0 text-center">
+              <li class="nav-item pe-2">
+                <a class="nav-link active py-0 px-3" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item px-2">
+                <a class="nav-link py-0  px-3" href="#">News</a>
+              </li>
+              <li class="nav-item px-2">
+                <a class="nav-link py-0 px-3" href="#">Live Cameras</a>
+              </li>
+              <li class="nav-item px-2">
+                <a class="nav-link py-0 px-3" href="#">Photos</a>
+              </li>
+              <li class="nav-item px-2 pe-3">
+                <a class="nav-link py-0 px-3" href="#">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+<!-- //!SECTION - Navbar End -->
+<!------------------------------------------------------------------------------------------------------------------------------------>
+<!-- //SECTION - Header Start -->
+      <header >
+        <div class="layer">
+            <div class="container py-5">
+                <div class="find-location  my-4">
+                    <input id="searchInput" class=" py-3 form-control form-control-lg rounded-pill m-auto  border-0" type="search" placeholder="Find your location... " aria-label="Search">
+                    <button id="findBtn" class="btn  rounded-pill text-white" type="submit">Find</button>
+                </div>    
+            </div>
+            <div class="forecast-table">
+                <div class="container  ">
+                    <div class="forecast-container">
+                        <div class="row px-2">
+                            <div class="today forecast col-lg-4 ">
+                                <div class="forecat-header row py-2 row align-items-center justify-content-between ">
+                                    <div id="todayName" class="day col-4"></div>
+                                    <div id="todayDate" class="date col-4 text-end"></div>
+                                </div>
+                                <div class="forecast-content p-3 " id="current">
+                                    <div id="location" class="location p-2 "></div>
+                                    <div class="degree py-3">
+                                        <div id="todayTemp" class="num"></div>
+                                        <div class="forecast-icon">
+                                            <img id="todayIcon" src="" alt="" width="90">
+                                        </div>	
+                                    </div>
+                                    <div id="todayFeels" class="feels mb-4"></div>
+                                    <span id="todayHumidity" class="me-2"></span>
+                                    <span id="todayWindSpeed" class="me-2"></span>
+                                    <span id="todayWindDirection" class="me-2"></span>
+                                    </div>
+                            </div>
+
+                            <div class="forecast col-lg-4 ">
+                                <div class="forecat-header py-2 row align-items-center justify-content-between text-center">
+                                    <div id="tomorrowName" class="day col"></div>
+                                </div>
+                                <div class="forecast-content row align-items-center justify-content-between text-center py-5">
+                                    <div class="forecast-icon mb-4">
+                                        <img id="tomorrowIcon" src="" alt="" width="48">
+                                    </div>
+                                    <div id="tomorrowTemp" class="degree "></div>
+                                    <small id="tomorrowSmallTemp" class="mb-3"></small>
+                                    <div id="tomorrowFeels" class="feels"></div>
+                                </div>
+                            </div>
+
+                            <div class="forecast col-lg-4 ">
+                                <div class="forecat-header row py-2 row align-items-center justify-content-between text-center">
+                                    <div id="dayAfterTommorrowName" class="day col"></div>
+                                </div>
+                                <div class="forecast-content row align-items-center justify-content-between text-center py-5">
+                                    <div class="forecast-icon mb-4">
+                                        <img id="dayAfterTommorrowIcon" src="" alt="" width="48">
+                                    </div>
+                                    <div id="dayAfterTommorrowTemp" class="degree "></div>
+                                    <small id="dayAfterTommorrowSmallTemp" class="mb-3"></small>
+                                    <div id="dayAfterTommorrowFeels" class="feels"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </header>
+<!-- //!SECTION - Header End -->
+<!------------------------------------------------------------------------------------------------------------------------------------>
+<!-- //SECTION - Footer Start -->
+      <footer class="site-footer">
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-8  mb-4">
+                        <input class=" py-3  form-control form-control-lg rounded-pill   border-0" type="text" placeholder="Enter your email to subscribe...">
+                        <button class="btn    rounded-pill text-white" type="submit">subscribe</button>
+                </div>
+                <div class="col-lg-3">
+                    <div class="social-links">
+                        <a href="#" ><i class="fa-brands fa-facebook-f fa-2x"></i></a>
+                        <a href="#" ><i class="fa-brands fa-twitter fa-2x"></i></a>
+                        <a href="#" ><i class="fa-brands fa-google-plus-g fa-2x"></i></a>
+                        <a href="#" ><i class="fa-brands fa-pinterest-p fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <p class="ps-5">Copyright 2014 Company name. Designed by Themezy. All rights reserved</p>
+        </div>
+    </footer>
+<!-- //!SECTION - Footer End -->
+<!------------------------------------------------------------------------------------------------------------------------------------>
+
+
+        <script src="JS/index.js"></script>
+
+        <script src                   = "js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
