@@ -63,7 +63,7 @@ color: var(--text);
 /*  //SECTION Header styling Start */
 
 header .layer{
-    background-image: url(/images/banner.png);
+    background-image: url(../images/banner.png);
     background-size: cover;
     background-repeat: no-repeat;
     /* margin-bottom: 3rem; */
