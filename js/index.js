@@ -84,26 +84,39 @@ function getWindDirection(args) {
             return "North-NorthWest"
     }
 }
+async function getGeoCode(location){
+    let res = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=5&appid=40eeb95d0c3ff14a5e12d14a938e0f33`);
+    if (res.ok && 400 != res.status) {
+        intitial=location;
+    console.log(intitial);
+
+    let finalRes = await res.json();
+    let lat = finalRes[0].lat;
+    let lon = finalRes[0].lon;
+    console.log(lon);
+    cuurrentLocation.innerText=`${finalRes[0].name}`;
+    getforecast(lat,lon);
+}
+}
 //Functions
-async function getforecast(location) {
+async function getforecast(lat,lon) {
     // loc?loc:"cairo";
     
-    let res = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=3a76dfdfbf894d8f973101128231802&q=${location}&days=3&aqi=no`);
+    let res = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=40eeb95d0c3ff14a5e12d14a938e0f33&units=metric`);
     if (res.ok && 400 != res.status) {
         intitial=location;
     console.log(intitial);
 
     let finalRes = await res.json();
 // TODAY 
-    let d = new Date(finalRes.forecast.forecastday[0].date);
-    todayName.innerText=`${getDayNAme(d)}`;
-    todayDate.innerText=`${d.getDate()} ${getMonthName(d)}`;
-    cuurrentLocation.innerText=`${finalRes.location.name}`;
-    todayTemp.innerHTML=`${finalRes.current.temp_c}<sup>o</sup>C`;
-    todayIcon.setAttribute("src",`${finalRes.current.condition.icon}`);
-    todayFeels.innerText=`${finalRes.current.condition.text}`;
-    todayHumidity.innerHTML=`<img   src="/images/icon-umberella.png" alt="icon-umberella"> ${finalRes.current.humidity}%`;
-    todayWindSpeed.innerHTML=`<img  src="images/icon-wind.png" alt="icon-wind"> ${finalRes.current.wind_kph} km/h`;
+    // let d = new Date(finalRes.forecast.date);
+    // todayName.innerText=`${getDayNAme(d)}`;
+    // todayDate.innerText=`${d.getDate()} ${getMonthName(d)}`;
+    todayTemp.innerHTML=`${finalRes.daily[0].temp.max}<sup>o</sup>C`;
+    // todayIcon.setAttribute("src",`${finalRes.current.condition.icon}`);
+    todayFeels.innerText=`${finalRes.daily[0].weather[0].description}`;
+    todayHumidity.innerHTML=`<img   src="/images/icon-umberella.png" alt="icon-umberella"> ${finalRes[0].humidity}%`;
+    todayWindSpeed.innerHTML=`<img  src="images/icon-wind.png" alt="icon-wind"> ${finalRes[0].wind_speed  } km/h`;
     todayWindDirection.innerHTML=`<img  src="images/icon-compass.png" alt="icon-compass"> ${getWindDirection(finalRes.current.wind_dir)}`;
 // TOMORROW
     let d1 = finalRes.forecast.forecastday[1];
@@ -123,13 +136,14 @@ async function getforecast(location) {
     dayAfterTommorrowFeels.innerText=`${d2.day.condition.text}`;
     // console.log(d2.day.condition.text,"day2"); 
 }}
-getforecast(intitial);  //  intitial value
-
+// getforecast(intitial);  //  intitial value
+getGeoCode(intitial?intitial:cairo);
 //Event Listeners
 // console.log(searchInput.getAttribute("Value"));
 // searchInput.setAttribute("oninput","getforecast(this.value)");  // working with no intitial value
 searchInput.addEventListener("change", function () {    // change saves the last entered location
-     getforecast(searchInput.value?searchInput.value:intitial);
+    //  getforecast(searchInput.value?searchInput.value:intitial);
+    getGeoCode(searchInput.value?searchInput.value:cairo);
 });
 
 // (async function() {
