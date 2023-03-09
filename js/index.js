@@ -115,25 +115,25 @@ async function getforecast(lat,lon) {
     todayTemp.innerHTML=`${finalRes.daily[0].temp.max}<sup>o</sup>C`;
     // todayIcon.setAttribute("src",`${finalRes.current.condition.icon}`);
     todayFeels.innerText=`${finalRes.daily[0].weather[0].description}`;
-    todayHumidity.innerHTML=`<img   src="/images/icon-umberella.png" alt="icon-umberella"> ${finalRes[0].humidity}%`;
-    todayWindSpeed.innerHTML=`<img  src="images/icon-wind.png" alt="icon-wind"> ${finalRes[0].wind_speed  } km/h`;
-    todayWindDirection.innerHTML=`<img  src="images/icon-compass.png" alt="icon-compass"> ${getWindDirection(finalRes.current.wind_dir)}`;
-// TOMORROW
-    let d1 = finalRes.forecast.forecastday[1];
-    let tomorrow = new Date(d1.date);
-    tomorrowName.innerText=`${getDayNAme(tomorrow)}`;
-    tomorrowIcon.setAttribute("src",`${d1.day.condition.icon}`);
-    tomorrowTemp.innerHTML=`${d1.day.maxtemp_c}<sup>o</sup>C`;
-    tomorrowSmallTemp.innerHTML=`${d1.day.mintemp_c}<sup>o</sup>`;
-    tomorrowFeels.innerText=`${d1.day.condition.text}`;
+//     todayHumidity.innerHTML=`<img   src="/images/icon-umberella.png" alt="icon-umberella"> ${finalRes[0].humidity}%`;
+//     todayWindSpeed.innerHTML=`<img  src="images/icon-wind.png" alt="icon-wind"> ${finalRes[0].wind_speed  } km/h`;
+//     todayWindDirection.innerHTML=`<img  src="images/icon-compass.png" alt="icon-compass"> ${getWindDirection(finalRes.current.wind_dir)}`;
+// // TOMORROW
+    // let d1 = finalRes.forecast.forecastday[1];
+    // let tomorrow = new Date(d1.date);
+    // tomorrowName.innerText=`${getDayNAme(tomorrow)}`;
+    // tomorrowIcon.setAttribute("src",`${d1.day.condition.icon}`);
+    // tomorrowTemp.innerHTML=`${d1.day.maxtemp_c}<sup>o</sup>C`;
+    // tomorrowSmallTemp.innerHTML=`${d1.day.mintemp_c}<sup>o</sup>`;
+    // tomorrowFeels.innerText=`${d1.day.condition.text}`;
 //After Tommorrow
-    let d2 = finalRes.forecast.forecastday[2];
-    let dayAfterTommorrow = new Date(d2.date);
-    dayAfterTommorrowName.innerText=`${getDayNAme(dayAfterTommorrow)}`;
-    dayAfterTommorrowIcon.setAttribute("src",`${d2.day.condition.icon}`);
-    dayAfterTommorrowTemp.innerHTML=`${d2.day.maxtemp_c}<sup>o</sup>C`;
-    dayAfterTommorrowSmallTemp.innerHTML=`${d2.day.mintemp_c}<sup>o</sup>`;
-    dayAfterTommorrowFeels.innerText=`${d2.day.condition.text}`;
+    // let d2 = finalRes.forecast.forecastday[2];
+    // let dayAfterTommorrow = new Date(d2.date);
+    // dayAfterTommorrowName.innerText=`${getDayNAme(dayAfterTommorrow)}`;
+    // dayAfterTommorrowIcon.setAttribute("src",`${d2.day.condition.icon}`);
+    // dayAfterTommorrowTemp.innerHTML=`${d2.day.maxtemp_c}<sup>o</sup>C`;
+    // dayAfterTommorrowSmallTemp.innerHTML=`${d2.day.mintemp_c}<sup>o</sup>`;
+    // dayAfterTommorrowFeels.innerText=`${d2.day.condition.text}`;
     // console.log(d2.day.condition.text,"day2"); 
 }}
 // getforecast(intitial);  //  intitial value
