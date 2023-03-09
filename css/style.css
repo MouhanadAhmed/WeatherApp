@@ -2,9 +2,9 @@
 /* //SECTION Helper styling Start */
 :root{
     --main-color:#009ad8;
-    --bd-color:#1e202b;
-    --secondary-bg:#323544;
-    --text:white;
+    --bd-color:#121212;
+    --secondary-bg:#161616; /*Elements*/
+    --text:white;   
     --secondary-text:grey;
     --font: "Roboto",  sans-serif;
 }
@@ -63,14 +63,17 @@ color: var(--text);
 /*  //SECTION Header styling Start */
 
 header .layer{
-    background-image: url(../images/banner.png);
+    background-color: var(--bd-color);
+    color: white;
+    /* background-image: url(../images/banner.png);
     background-size: cover;
     background-repeat: no-repeat;
-    /* margin-bottom: 3rem; */
-    /* background-position: 0% 100%;  */
-    /* min-height: 750px; */
-    /* height: 90vh; */
-    /* z-index: -2; */
+    
+    margin-bottom: 3rem;
+    background-position: 0% 100%; 
+    min-height: 750px;
+    height: 90vh;
+    z-index: -2; */
 }
 /* header .layer::after{
     content: "";
@@ -82,13 +85,13 @@ header .layer{
     bottom: 0;
     z-index: ;
 } */
-header .layer .container .find-location{
+header .layer .container .find-location #searchInput{
     position: relative;
-
+    background-color: #121212 !important;
 }
 header .layer .container input{
     width: 89%;
-    background-color: var(--bd-color);
+    background-color: var(--secondary-bg);
     caret-color:var(--text);
     color:var(--text);
     font-size: 0.8rem;
@@ -101,6 +104,11 @@ box-shadow: none;
 header .layer .container input::placeholder {
     color: var(--secondary-text);
     font-size: 0.8rem;
+}
+header .layer .container .find-location #searchIcon{
+    position: absolute;
+    top:13.5%;
+    left: 15%;
 }
 header .layer .container button{
     position: absolute;
@@ -127,8 +135,12 @@ header .layer .forecast-table .container .row {
     /* overflow: hidden; */
 
 }
+#today{
+    background-color: var(--secondary-bg);
+    margin-right: 1rem;
+}
 header .layer .forecast-table .forecast-container{
-    background: var(--secondary-bg);
+    /* background: var(--secondary-bg); */
     color: #bfc1c8;
     width: 90%;
     margin: auto;
@@ -139,34 +151,42 @@ header .layer .forecast-table .forecast-container{
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
 }
-header .layer .forecast-table .forecast .forecat-header{
+header .layer .forecast-table .forecast {
 font-size: 0.9rem;
-background-color: rgba(0, 0, 0, 0.1);
+background-color: var(--secondary-bg);
 }
 header .layer .forecast-table .forecast:nth-child(even) {
-    background-color: #262936;
+    /* background-color:var(--bd-color); */
     
 }
 #todayWindDirection{
     font-size: 0.7rem;
 }
-.forecast-container .forecast.today .location {
+.forecast-container .forecast .today .location {
     font-size: 1.2857142857em;
     font-weight: 400;
 }
 .forecast-container .forecast .forecast-content .degree {
     /* font-size: 24px; */
-    font-size: 1.7142857143em;
+    font-size: 1rem;
     color: white;
-    font-weight: 700;
+    font-weight: 200;
 }
 .forecast-container .forecast.today .degree .num {
-    font-size: 4.5rem;
+    font-size: 5.5rem;
+    line-height: 5rem;
+    font-weight: 300;
+
     /* font-size: 6.4285714286rem; */
-    margin-right: 10px;
+    /* margin-right: 10px; */
     font-family: var(--font);
 }
-.forecast-container .forecast.today .degree .num, .forecast-container .forecast.today .degree .forecast-icon {
+.forecast-container .forecast.today .degree .num  sup{
+    font-weight: 200;
+    font-size: 3.5rem;
+
+}
+.forecast-container .forecast.today .degree .num, .forecast-container .forecast .today .degree .forecast-icon {
     display: inline-block;
     vertical-align: middle;
 }
@@ -174,7 +194,10 @@ header .layer .forecast-table .forecast:nth-child(even) {
     color: var(--main-color);
     font-size: 0.9rem;
 }
-
+.small-cloud {
+    -webkit-animation: float 8s linear infinite;
+    animation: float 8s linear infinite;
+}
 @media (max-width: 400px){
     header .layer .container .find-location #findBtn{
         top:5px;
