@@ -8,114 +8,307 @@
 <head>
     <meta charset                     = "UTF-8">
     <meta name                        = "viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href                        = "https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel                         = "stylesheet" href="./css/all.min.css">
     <link href                        = "./css/bootstrap.min.css" rel="stylesheet" >
     <link rel                         = "stylesheet" href="./css/style.css">
+    <link rel                         ="preload" href="./css/38fff81e9ebac71c.css" as="style"/>
+    <link rel                         ="stylesheet" href="./css/38fff81e9ebac71c.css" data-n-g=""/>
     <title>Weather App</title>
 </head>
 <body >
+    <!-- //NOTE - SVG  -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
+        <defs>
+            <radialGradient id="gradYellow" cx="50%" cy="50%" r="80%" fx="90%" fy="80%">
+                <stop offset="0%" style="stop-color:yellow;stop-opacity:1"></stop>
+                <stop offset="100%" style="stop-color:orange;stop-opacity:1"></stop>
+            </radialGradient>
+            <radialGradient id="gradDarkGray" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                <stop offset="0%" style="stop-color:white;stop-opacity:1"></stop>
+                <stop offset="70%" style="stop-color:gray;stop-opacity:1"></stop>
+                <stop offset="100%" style="stop-color:dimgray;stop-opacity:1"></stop>
+            </radialGradient>
+            <radialGradient id="gradGray" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                <stop offset="0%" style="stop-color:white;stop-opacity:1"></stop>
+                <stop offset="100%" style="stop-color:darkgray;stop-opacity:1"></stop>
+            </radialGradient>
+            <linearGradient id="gradWhite" x1="40%" y1="50%" x2="90%" y2="90%">
+                <stop offset="0%" style="stop-color:white;stop-opacity:1"></stop>
+                <stop offset="100%" style="stop-color:darkgray;top-opacity:1"></stop>
+            </linearGradient>
+        </defs>
+        <symbol id="sun">
+            <circle cx="50" cy="50" r="20" fill="url(#gradYellow)"></circle>
+            <line x1="50" y1="27" x2="50" y2="2" class="longRay"></line>
+            <line x1="50" y1="73" x2="50" y2="98" class="longRay"></line>
+            <line x1="27" y1="50" x2="2" y2="50" class="longRay"></line>
+            <line x1="73" y1="50" x2="98" y2="50" class="longRay"></line>
+            <line x1="34" y1="34" x2="16" y2="16" class="longRay"></line>
+            <line x1="66" y1="66" x2="84" y2="84" class="longRay"></line>
+            <line x1="34" y1="66" x2="16" y2="84" class="longRay"></line>
+            <line x1="66" y1="34" x2="84" y2="16" class="longRay"></line>
+            <line x1="59" y1="29" x2="66" y2="13" class="shortRay"></line>
+            <line x1="71" y1="42" x2="87" y2="35" class="shortRay"></line>
+            <line x1="71" y1="58.5" x2="87" y2="65" class="shortRay"></line>
+            <line x1="59" y1="71" x2="66" y2="87" class="shortRay"></line>
+            <line x1="41" y1="71" x2="34" y2="87" class="shortRay"></line>
+            <line x1="29.5" y1="58.5" x2="13" y2="66" class="shortRay"></line>
+            <line x1="29" y1="42" x2="13" y2="35" class="shortRay"></line>
+            <line x1="41" y1="29" x2="35" y2="13" class="shortRay"></line>
+        </symbol>
+        <symbol id="moon">
+            <path d="M60,20 A30,30 0 1,0 90,65 22,22 0 1,1 60,20z" fill="url(#gradYellow)"></path>
+        </symbol>
+        <symbol id="star">
+            <polygon points="5,0 2,10 10,4 0,4 8,10" style="fill:url(#gradYellow);fill-rule:nonzero"></polygon>
+        </symbol>
+        <symbol id="grayCloud">
+            <path d="M20,15 Q25,0 45,11 Q60,5 60,20 A30,15 5 1,1 20,15 Z"></path>
+        </symbol>
+        <symbol id="whiteCloud">
+            <path fill="url(#gradWhite)" d="M11,47 Q13,37 21,42 Q31,30 41,38 A28,21 -25 1,1 35,75 Q23,85 19,73 A12,12 0 0,1 11,47Z"></path>
+        </symbol>
+        <symbol id="rainDrop">
+            <path fill="lightblue" d="M10 0 Q10,0 14,7 A5,5 0 1,1 6,7 Q10,0 10,0Z"></path>
+        </symbol>
+        <symbol id="rainDrizzle">
+            <line x1="20" y1="2" x2="10" y2="40"></line>
+        </symbol>
+        <symbol id="thunderBolt">
+            <path fill="black" d="M15,0 L1,23 L8,23 L0,40 L15,19 L8,19Z"></path>
+        </symbol>
+        <symbol id="snowFlake">
+            <path d="M5,0 L5,10 M0,5 L10,5 M1.5,1.5 L8.5,8.5 M8.5,1.5 L1.5,8.5"></path>
+            <path d="M3.5,0.25 L5,2 L6.5,0.25 M3.5,9.75 L5,8 L6.5,9.75"></path>
+            <path d="M0.25,3.5 L2,5 L0.25,6.5 M9.75,3.5 L8,5 L9.75,6.5"></path>
+            <path d="M0.75,2.90 L2.85,2.85 L2.90,0.75 M7.25,9.35 L7.15,7.15 L9.35,7.25"></path>
+            <path d="M0.75,7.25 L2.85,7.15 L2.90,9.35 M7.15,0.75 L7.25,2.85 L9.35,2.90"></path>
+        </symbol>
+        <symbol id="icePellet">
+            <circle cx="4" cy="4" r="4" fill="#e3fcff"></circle>
+        </symbol>
+        <symbol id="mist">
+            <path d="M5,34 L43,34"></path>
+            <path d="M10,40 L40,40 Q51.5,40 50,35 T60,30 L80,30"></path>
+            <path d="M15,45 L45,45 Q56.5,45 55,40 T65,35 L90,35"></path>
+            <path d="M60,42 L85,42"></path>
+        </symbol>
+    </svg>
+    <!-- //!NOTE - SVG  -->
 
-<!------------------------------------------------------------------------------------------------------------------------------------>
-<!-- //SECTION - Navbar Start -->
-    <nav class="navbar navbar-dark navbar-expand-lg py-5">
-        <div class="container ">
-            <div class="logo">
-                <a  href="index.html">
-                    <img  src="./images/logo@2x.png" alt="logo">
-                    </a>
-                </div>
-                    <div class="logo-text">
-                        <a class="navbar-brand text-white" href="#">Weather</a>
-                        <h5 class=" text-white"> tagline goes here</h5>
-                    </div>
-            
-          <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
-            <ul class="navbar-nav pe-3 ms-auto mb-2 mb-lg-0 text-center">
-              <li class="nav-item pe-2">
-                <a class="nav-link active py-0 px-3" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item px-2">
-                <a class="nav-link py-0  px-3" href="#">News</a>
-              </li>
-              <li class="nav-item px-2">
-                <a class="nav-link py-0 px-3" href="#">Live Cameras</a>
-              </li>
-              <li class="nav-item px-2">
-                <a class="nav-link py-0 px-3" href="#">Photos</a>
-              </li>
-              <li class="nav-item px-2 pe-3">
-                <a class="nav-link py-0 px-3" href="#">Contact</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-<!-- //!SECTION - Navbar End -->
+
 <!------------------------------------------------------------------------------------------------------------------------------------>
 <!-- //SECTION - Header Start -->
-      <header >
-        <div class="layer">
-            <div class="container py-5">
-                <div class="find-location  my-4">
-                    <input id="searchInput" class=" py-3 form-control form-control-lg rounded-pill m-auto  border-0" type="search" placeholder="Find your location... " aria-label="Search">
-                    <button id="findBtn" class="btn  rounded-pill text-white" type="submit">Find</button>
-                </div>    
-            </div>
-            <div class="forecast-table">
-                <div class="container  ">
+      <header class=" forecast w-100" >
+        <div class="layer  d-flex flex-lg-nowrap">
+            <div class="">
+                <div class="  m-auto px-5 overflow-hidden ">
                     <div class="forecast-container">
-                        <div class="row px-2">
-                            <div class="today forecast col-lg-4 ">
-                                <div class="forecat-header row py-2 row align-items-center justify-content-between ">
-                                    <div id="todayName" class="day col-4"></div>
-                                    <div id="todayDate" class="date col-4 text-end"></div>
-                                </div>
+                        <div class="row flex-lg-nowrap gx-5">
+                            <div id="today" class="today   rounded rounded-3 forecast col-lg-4 h-100vh">
+                                <div class="find-location  my-4">
+                                    <input id="searchInput" class=" py-3 form-control  rounded-pill m-auto  border-0" type="search" placeholder=" Search for place" aria-label="Search">
+                                </div>    
+
                                 <div class="forecast-content p-3 " id="current">
-                                    <div id="location" class="location p-2 "></div>
                                     <div class="degree py-3">
+                                        <div class="flex md:flex-col justify-between md:mt-0 px-5">
+                                            <figure>
+                                                <svg class="darkmode-ignore icon w-24 md:w-56 h-24 md:h-56" viewBox="0 0 100 100">
+                                                    <use xlink:href="#sun" x="-12" y="-18"></use>
+                                                    <use xlink:href="#grayCloud" class="small-cloud" fill="url(#gradGray)"></use>
+                                                    <use xlink:href="#rainDrizzle" x="25" y="65"></use>
+                                                    <use xlink:href="#rainDrizzle" x="40" y="65"></use>
+                                                    <use xlink:href="#whiteCloud" x="7"></use>
+                                                </svg>
+                                            </figure>
+                                        </div>
                                         <div id="todayTemp" class="num"></div>
-                                        <div class="forecast-icon">
-                                            <img id="todayIcon" src="" alt="" width="90">
-                                        </div>	
                                     </div>
-                                    <div id="todayFeels" class="feels mb-4"></div>
-                                    <span id="todayHumidity" class="me-2"></span>
-                                    <span id="todayWindSpeed" class="me-2"></span>
-                                    <span id="todayWindDirection" class="me-2"></span>
+                                    
+                                    <div class="forecat-header row mb-3 py-3 row align-items-center justify-content-between  border-bottom">
+                                        <div id="location" class="location p-2 col fw-bold"></div>
+                                      <div class="col">
+                                        <div id="todayName" class="d-inline-block  fw-bold"></div>
+                                        <div id="todayDate" class="d-inline-block"></div>
+                                      </div>  
+                                    </div>
+                                    <div class=" d-flex justify-content-start mb-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" class="h-6 w-6"><path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path></svg>
+                                    <span id="todayFeels" class="ms-2"></span>
+                                    </div>
+                                    <div class="d-flex justify-content-start mb-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" class="h-6 w-6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>                                        <span id="todayFeels" class="ms-2"></span>
+                                        <span id="lastRefresh" class="ms-2"></span>    
+                                    </div>
                                     </div>
                             </div>
 
-                            <div class="forecast col-lg-4 ">
-                                <div class="forecat-header py-2 row align-items-center justify-content-between text-center">
-                                    <div id="tomorrowName" class="day col"></div>
-                                </div>
-                                <div class="forecast-content row align-items-center justify-content-between text-center py-5">
-                                    <div class="forecast-icon mb-4">
-                                        <img id="tomorrowIcon" src="" alt="" width="48">
+                            <div class="col-lg-8 ">
+                                <div class="forecast-table ">
+                                    <div class="container ms-0  ">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h2 class="fs-2 ">Weather Forecast</h2>
+                                            <i id                                                   = "lightModeBtn" class="fa-solid fa-sun fa-pull-right p-5 d-block"></i>
+                                            <i id                                                   = "darkModeBtn" class="fa-solid fa-moon fa-pull-right p-5 d-none"></i>
+                                        </div>
+
+                                        <div class="row flex-nowrap gx-5 overflow-x-scroll mb-5">
+                                        <div class="forecast animate text-center rounded rounded-3 col   me-3  mt-5 py-4">
+                                            <div id="tomorrow" class=" col"></div>
+                                            <div class="forecast-content row align-items-center justify-content-between text-center ">
+                                                <div class="darkmode-ignore forecast-icon ">
+                                                    <img id="tomorrowIcon" src="" alt="" width="48">
+                                                    <svg class="icon h-16 w-16" viewBox="0 0 100 100"><use xlink:href="#moon" x="-20" y="-15"></use><use xlink:href="#grayCloud" class="small-cloud" fill="url(#gradGray)"></use><use id="snowFlake2" xlink:href="#snowFlake" x="35" y="65"></use><use id="snowFlake4" xlink:href="#snowFlake" x="50" y="65"></use><use xlink:href="#rainDrizzle" x="25" y="65"></use><use xlink:href="#rainDrizzle" x="40" y="65"></use><use xlink:href="#whiteCloud" x="7"></use></svg>
+                                                </div>
+                                                <div id="tomorrowTemp" class="degree "></div>
+                                                <small id="tomorrowTempFeels" ></small>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="forecast animate text-center rounded rounded-3 col  me-3 mt-5 p-4">
+                                            <div id="secondDay" class="day col"></div>
+                                            <div class="forecast-content row align-items-center justify-content-between text-center ">
+                                                <div class="darkmode-ignore forecast-icon ">
+                                                    <img id="secondDayIcon" src="" alt="" width="48">
+                                                    <svg class="icon h-16 w-16" viewBox="0 0 100 100"><use xlink:href="#grayCloud" class="small-cloud" fill="url(#gradGray)"></use><use xlink:href="#whiteCloud" x="7"></use></svg>
+                                                </div>
+                                                <div id="secondDayTemp" class="degree "></div>
+                                                <small id="secondDayTempFeels" ></small>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="forecast animate text-center rounded rounded-3 col   me-3 mt-5 p-4">
+                                            <div id="thirdDay" class="day col"></div>
+                                            <div class="forecast-content row align-items-center justify-content-between text-center ">
+                                                <div class="darkmode-ignore forecast-icon ">
+                                                    <img id="thirdDayIcon" src="" alt="" width="48">
+                                                    <svg class="icon h-16 w-16" viewBox="0 0 100 100"><use xlink:href="#moon" x="-20" y="-15"></use><use xlink:href="#grayCloud" class="small-cloud" fill="url(#gradGray)"></use><use xlink:href="#rainDrizzle" x="25" y="65"></use><use xlink:href="#rainDrizzle" x="40" y="65"></use><use xlink:href="#whiteCloud" x="7"></use></svg>
+                                                </div>
+                                                <div id="thirdDayTemp" class="degree "></div>
+                                                <small id="thirdDayTempFeels" ></small>
+                                            </div>
+                                        </div>
+                                        <div class="forecast animate text-center rounded rounded-3 col   me-3 mt-5 p-4">
+                                            <div id="fourthDay" class="day col"></div>
+                                            <div class="forecast-content row align-items-center justify-content-between text-center ">
+                                                <div class="darkmode-ignore forecast-icon ">
+                                                    <img id="fourthDayIcon" src="" alt="" width="48">
+                                                    <svg class="icon h-16 w-16" viewBox="0 0 100 100"><use xlink:href="#moon" x="-15"></use><use xlink:href="#star" x="42" y="30" class="stars animated infinite flash"></use><use xlink:href="#star" x="61" y="32" class="stars animated infinite flash delay-1s"></use><use xlink:href="#star" x="55" y="50" class="stars animated infinite flash delay-2s"></use></svg>
+                                                </div>
+                                                <div id="fourthDayTemp" class="degree "></div>
+                                                <small id="fourthDayTempFeels" ></small>
+                                            </div>
+                                        </div>
+                                        <div class="forecast animate text-center rounded rounded-3 col   me-3 mt-5 p-4">
+                                            <div id="fifthDay" class="day col"></div>
+                                            <div class="forecast-content row align-items-center justify-content-between text-center ">
+                                                <div class="darkmode-ignore forecast-icon ">
+                                                    <img id="fifthDayIcon" src="" alt="" width="48"> 
+                                                    <svg class="icon h-16 w-16" viewBox="0 0 100 100"><use xlink:href="#grayCloud" class="small-cloud" fill="url(#gradGray)"></use><use xlink:href="#grayCloud" x="25" y="10" class="reverse-small-cloud" fill="url(#gradDarkGray)"></use><use xlink:href="#thunderBolt" x="30" y="61" class="lighting animated infinite flash"></use><use xlink:href="#whiteCloud" x="7"></use><use xlink:href="#thunderBolt" x="45" y="56" class="lighting animated infinite flash delay-1s"></use></svg>
+                                                </div>
+                                                <div id="fifthDayTemp" class="degree "></div>
+                                                <small id="fifthDayTempFeels" ></small>
+                                            </div>
+                                        </div>
+                                        <div class="forecast animate text-center rounded rounded-3 col   mt-5 p-4">
+                                            <div id="sixthDay" class="day col"></div>
+                                            <div class="forecast-content row align-items-center justify-content-between text-center ">
+                                                <div class="darkmode-ignore forecast-icon ">
+                                                    <img id="sixthDayIcon" src="" alt="" width="48">
+                                                    <svg class="icon h-16 w-16" viewBox="0 0 100 100"><use xlink:href="#sun"></use></svg>
+                                                </div>
+                                                <div id="sixthDayTemp" class="degree "></div>
+                                                <small id="sixthDayTempFeels" ></small>
+                                            </div>
+                                        </div>
+                                        </div>
+
+                                        <div class="row my-5">
+                                            <h2 class="fs-2 mb-4">Today's heighlights</h2>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                             <div class="forecast  rounded-2xl shadow-sm p-4 h-56 flex flex-col items-center space-y-4">
+                                                <p class="text-gray-400 w-full">UV Index</p>
+                                                <img src="./images/uv.png" class="w-20" alt="">
+                                                    <div  class="flex justify-between items-center space-x-2">
+                                                    <p id="uv1" class="text-gray-300 dark:text-white/80 text-md">1</p>
+                                                    <p id="uv2" class="text-gray-300 dark:text-white/80 text-md">2</p>
+                                                    <p id="uv3" class="text-gray-300 dark:text-white/80 text-md">3</p>
+                                                    <p id="uv4" class=" text-gray-300 dark:text-white/80 text-md">4</p>
+                                                    <!-- - text-2xl font-bold -->
+                                                    <p id="uv5" class="text-gray-300 dark:text-white/80 text-md">5</p>
+                                                    <p id="uv6" class="text-gray-300 dark:text-white/80 text-md">6</p>
+                                                    <p id="uv7" class="text-gray-300 dark:text-white/80 text-md">7</p>
+                                                    </div>
+                                                </div>
+                                                <div class="forecast  rounded-2xl shadow-sm p-4 h-56 flex flex-col items-center space-y-4 relative">
+                                                    <p class="text-gray-400 w-full">Wind Staus</p>
+                                                    <figure class=" absolute bottom-0">
+                                                        <svg class="icon w-24" viewBox="0 0 100 100">
+                                                            <use class="mist" xlink:href="#mist" x="0" y="0">
+                                                            </use>
+                                                        </svg>
+                                                    </figure>
+                                                    <div class="flex items-end">
+                                                    <p id="todayWindSpeed" class=" text-[4rem] font-light"></p>
+                                                    <div class="mb-5">km/h</div>
+                                                    </div>
+                                                </div>
+                                                <div class="forecast  rounded-2xl shadow-sm p-4 h-56 flex flex-col items-center space-y-6">
+                                                    <p class="text-gray-400 w-full">Sunrise &amp; Sunset</p>
+                                                    <div class="flex space-x-4">
+                                                        <figure>
+                                                            <svg class="darkmode-ignore icon h-9 w-9" viewBox="0 0 100 100"><use xlink:href="#sun"></use></svg>
+                                                        </figure>
+                                                        <div>
+                                                            <p id="sunrise">06:30 AM</p>
+                                                          
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex space-x-4">
+                                                        <figure>
+                                                            <svg class="darkmode-ignore icon h-9 w-9" viewBox="0 0 100 100">
+                                                                <use xlink:href="#moon" x="-15"></use><use xlink:href="#star" x="42" y="30" class="stars animated infinite flash"></use>
+                                                                <use xlink:href="#star" x="61" y="32" class="stars animated infinite flash delay-1s"></use>
+                                                                <use xlink:href="#star" x="55" y="50" class="stars animated infinite flash delay-2s"></use>
+                                                            </svg>
+                                                        </figure>
+                                                        <div>
+                                                            <p id="sunset">08:43 PM</p>
+                                                          
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="forecast  rounded-2xl shadow-sm p-4 h-56 flex flex-col space-y-4">
+                                                    <p class="text-gray-400">Humidity</p>
+                                                    <div class="flex items-top align-items-center justify-content-center">
+                                                        <p id="todayHumidity" class=" text-[4rem] font-light">12</p>
+                                                        <div class="mt-5">%</div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="forecast  rounded-2xl shadow-sm p-4 h-56 flex flex-col space-y-4">
+                                                    <p class="text-gray-400">Visibility</p>
+                                                    <div class="flex items-top align-items-center justify-content-center">
+                                                        <p id="visibility" class=" text-[4rem] font-light">5.2</p>
+                                                        <div class="mt-5">km</div>
+                                                    </div>
+                                                </div>
+                                                <div class="forecast  rounded-2xl shadow-sm p-4 h-56 flex flex-col space-y-4">
+                                                    <p class="text-gray-400">Air Quality</p>
+                                                    <div class="flex items-top align-items-center justify-content-center">
+                                                        <p class=" text-[4rem] font-light">105</p>
+                                                        <div class="mt-5"></div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div id="tomorrowTemp" class="degree "></div>
-                                    <small id="tomorrowSmallTemp" class="mb-3"></small>
-                                    <div id="tomorrowFeels" class="feels"></div>
                                 </div>
                             </div>
 
-                            <div class="forecast col-lg-4 ">
-                                <div class="forecat-header row py-2 row align-items-center justify-content-between text-center">
-                                    <div id="dayAfterTommorrowName" class="day col"></div>
-                                </div>
-                                <div class="forecast-content row align-items-center justify-content-between text-center py-5">
-                                    <div class="forecast-icon mb-4">
-                                        <img id="dayAfterTommorrowIcon" src="" alt="" width="48">
-                                    </div>
-                                    <div id="dayAfterTommorrowTemp" class="degree "></div>
-                                    <small id="dayAfterTommorrowSmallTemp" class="mb-3"></small>
-                                    <div id="dayAfterTommorrowFeels" class="feels"></div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -124,33 +317,9 @@
       </header>
 <!-- //!SECTION - Header End -->
 <!------------------------------------------------------------------------------------------------------------------------------------>
-<!-- //SECTION - Footer Start -->
-      <footer class="site-footer">
-        <div class="container">
-            <div class="row ">
-                <div class="col-md-8  mb-4">
-                        <input class=" py-3  form-control form-control-lg rounded-pill   border-0" type="text" placeholder="Enter your email to subscribe...">
-                        <button class="btn    rounded-pill text-white" type="submit">subscribe</button>
-                </div>
-                <div class="col-lg-3">
-                    <div class="social-links">
-                        <a href="#" ><i class="fa-brands fa-facebook-f fa-2x"></i></a>
-                        <a href="#" ><i class="fa-brands fa-twitter fa-2x"></i></a>
-                        <a href="#" ><i class="fa-brands fa-google-plus-g fa-2x"></i></a>
-                        <a href="#" ><i class="fa-brands fa-pinterest-p fa-2x"></i></a>
-                    </div>
-                </div>
-            </div>
 
-            <p class="ps-5">Copyright 2014 Company name. Designed by Themezy. All rights reserved</p>
-        </div>
-    </footer>
-<!-- //!SECTION - Footer End -->
-<!------------------------------------------------------------------------------------------------------------------------------------>
-
-
-        <script src="./js/index.js"></script>
-
-        <script src                   = "./js/bootstrap.bundle.min.js"></script>
+        <script  src="./js/index.js"></script>
+        <script src= "./js/bootstrap.bundle.min.js"></script>
+        <!-- <script src="./node_modules/darkmode-js/src/darkmode.js"></script> -->
 </body>
 </html>

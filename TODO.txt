@@ -1,0 +1,4 @@
+Hourly box contents:
+1- Hour
+2- Icon
+3- Temperature high/low 
