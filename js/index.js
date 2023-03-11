@@ -57,6 +57,12 @@ const dayAfterTommorrowTemp                           = document.querySelector("
 const dayAfterTommorrowSmallTemp                      = document.querySelector("#dayAfterTommorrowSmallTemp");
 const dayAfterTommorrowFeels                          = document.querySelector("#dayAfterTommorrowFeels");
 // Helper Functions
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+    changeColorModeLight();
+}
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+    const newColorScheme = event.matches ? "dark" : "light";
+});
 lightModeBtn.addEventListener("click",function(){
     changeColorModeLight();
 })
