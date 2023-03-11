@@ -1,201 +1,234 @@
 "use strict";
 // variables 
-let intitial="Cairo";
-const findBtn =document.querySelector("#findBtn");
-const searchInput =document.querySelector("#searchInput");
+var lightModeBtn                                      = document.getElementById("lightModeBtn");
+var darkModeBtn                                       = document.getElementById("darkModeBtn");
+let intitial                                          = "Cairo";
+const findBtn                                         = document.querySelector("#findBtn");
+const searchInput                                     = document.querySelector("#searchInput");
+const root                                            = document.querySelector(':root');
 //Today
-const todayName =document.querySelector("#todayName");
-const todayDate =document.querySelector("#todayDate");
-const cuurrentLocation =document.querySelector("#location");
-const todayTemp =document.querySelector("#todayTemp");
-const todayIcon =document.querySelector("#todayIcon");
-const todayFeels =document.querySelector("#todayFeels");
-const todayHumidity =document.querySelector("#todayHumidity");
-const todayWindSpeed =document.querySelector("#todayWindSpeed");
-const todayWindDirection =document.querySelector("#todayWindDirection");
-// Hourly 
-const  nextHour=document.querySelector("#nextHour");
-const  nextHourIcon=document.querySelector("#nextHourIcon");
-const  nextHourTemp=document.querySelector("#nextHourTemp");
-const  nextHourTempFeels=document.querySelector("#nextHourTempFeels");
-// secondHour
-const  secondHour=document.querySelector("#secondHour");
-const  secondHourIcon=document.querySelector("#secondHourIcon");
-const  secondHourTemp=document.querySelector("#secondHourTemp");
-const  secondHourTempFeels=document.querySelector("#secondHourTempFeels");
-// thirdHour
-const  thirdHour=document.querySelector("#thirdHour");
-const  thirdHourIcon=document.querySelector("#thirdHourIcon");
-const  thirdHourTemp=document.querySelector("#thirdHourTemp");
-const  thirdHourTempFeels=document.querySelector("#thirdHourTempFeels");
-// fourthHour
-const  fourthHour=document.querySelector("#fourthHour");
-const  fourthHourIcon=document.querySelector("#fourthHourIcon");
-const  fourthHourTemp=document.querySelector("#fourthHourTemp");
-const  fourthHourTempFeels=document.querySelector("#fourthHourTempFeels");
-// fifthHour
-const  fifthHour=document.querySelector("#fifthHour");
-const  fifthHourIcon=document.querySelector("#fifthHourIcon");
-const  fifthHourTemp=document.querySelector("#fifthHourTemp");
-const  fifthHourTempFeels=document.querySelector("#fifthHourTempFeels");
+const todayName                                       = document.querySelector("#todayName");
+const todayDate                                       = document.querySelector("#todayDate");
+const cuurrentLocation                                = document.querySelector("#location");
+const todayTemp                                       = document.querySelector("#todayTemp");
+const todayIcon                                       = document.querySelector("#todayIcon");
+const todayFeels                                      = document.querySelector("#todayFeels");
+const lastRefresh                                     = document.querySelector("#lastRefresh");
+const todayHumidity                                   = document.querySelector("#todayHumidity");
+const todayWindSpeed                                  = document.querySelector("#todayWindSpeed");
+const todayWindDirection                              = document.querySelector("#todayWindDirection");
+// Daily
+const  tomorrow                                       = document.querySelector("#tomorrow");
+const  tomorrowIcon                                   = document.querySelector("#tomorrowIcon");
+const  tomorrowTemp                                   = document.querySelector("#tomorrowTemp");
+const  tomorrowTempFeels                              = document.querySelector("#tomorrowTempFeels");
+// secondDay
+const  secondDay                                      = document.querySelector("#secondDay");
+const  secondDayIcon                                  = document.querySelector("#secondDayIcon");
+const  secondDayTemp                                  = document.querySelector("#secondDayTemp");
+const  secondDayTempFeels                             = document.querySelector("#secondDayTempFeels");
+// thirdDay=
+const  thirdDay                                       = document.querySelector("#thirdDay");
+const  thirdDayIcon                                   = document.querySelector("#thirdDayIcon");
+const  thirdDayTemp                                   = document.querySelector("#thirdDayTemp");
+const  thirdDayTempFeels                              = document.querySelector("#thirdDayTempFeels");
+// fourthDay=
+const  fourthDay                                      = document.querySelector("#fourthDay");
+const  fourthDayIcon                                  = document.querySelector("#fourthDayIcon");
+const  fourthDayTemp                                  = document.querySelector("#fourthDayTemp");
+const  fourthDayTempFeels                             = document.querySelector("#fourthDayTempFeels");
+// fifthDay=
+const  fifthDay                                       = document.querySelector("#fifthDay");
+const  fifthDayIcon                                   = document.querySelector("#fifthDayIcon");
+const  fifthDayTemp                                   = document.querySelector("#fifthDayTemp");
+const  fifthDayTempFeels                              = document.querySelector("#fifthDayTempFeels");
 // sixthHour
-const  sixthHour=document.querySelector("#sixthHour");
-const  sixthHourIcon=document.querySelector("#sixthHourIcon");
-const  sixthHourTemp=document.querySelector("#sixthHourTemp");
-const  sixthHourTempFeels=document.querySelector("#sixthHourTempFeels");
+const  sixthDay                                       = document.querySelector("#sixthDay");
+const  sixthDayIcon                                   = document.querySelector("#sixthDayIcon");
+const  sixthDayTemp                                   = document.querySelector("#sixthDayTemp");
+const  sixthDayTempFeels                              = document.querySelector("#sixthDayTempFeels");
 //Tommorrow
-const tomorrowName =document.querySelector("#tomorrowName");
-const tomorrowIcon =document.querySelector("#tomorrowIcon");
-const tomorrowTemp =document.querySelector("#tomorrowTemp");
-const tomorrowSmallTemp =document.querySelector("#tomorrowSmallTemp");
-const tomorrowFeels =document.querySelector("#tomorrowFeels");
+const tomorrowName                                    = document.querySelector("#tomorrowName");
+const tomorrowSmallTemp                               = document.querySelector("#tomorrowSmallTemp");
 //dayAfterTommorrow
-const dayAfterTommorrowName =document.querySelector("#dayAfterTommorrowName");
-const dayAfterTommorrowIcon =document.querySelector("#dayAfterTommorrowIcon");
-const dayAfterTommorrowTemp =document.querySelector("#dayAfterTommorrowTemp");
-const dayAfterTommorrowSmallTemp =document.querySelector("#dayAfterTommorrowSmallTemp");
-const dayAfterTommorrowFeels =document.querySelector("#dayAfterTommorrowFeels");
+const dayAfterTommorrowName                           = document.querySelector("#dayAfterTommorrowName");
+const dayAfterTommorrowIcon                           = document.querySelector("#dayAfterTommorrowIcon");
+const dayAfterTommorrowTemp                           = document.querySelector("#dayAfterTommorrowTemp");
+const dayAfterTommorrowSmallTemp                      = document.querySelector("#dayAfterTommorrowSmallTemp");
+const dayAfterTommorrowFeels                          = document.querySelector("#dayAfterTommorrowFeels");
 // Helper Functions
+lightModeBtn.addEventListener("click",function(){
+    changeColorModeLight();
+})
+darkModeBtn.addEventListener("click",function(){
+    changeColorModeDark();
+})
+function showHiddenItem(item){
+    item.classList.replace("d-none","d-block");
+}
+function hideItem(item){
+    item.classList.replace("d-block","d-none");
+}
+function changeColorModeLight() {
+    document.querySelector("header .layer").style.backgroundColor="#f3f4f6";
+    document.querySelector(".form-control").style.backgroundColor="#f3f4f6";
+    document.querySelector("#today").style.backgroundColor="#fcfcfc";
+    document.querySelector("#today").style.color="black";
+    Array.from(document.querySelectorAll("h2")).forEach(e => {e.style.color="black";});
+    Array.from( document.querySelectorAll("header .layer .forecast-table .forecast")).forEach(e => {e.style.color="black";e.style.backgroundColor="#fcfcfc"});
+    hideItem(lightModeBtn);
+    showHiddenItem(darkModeBtn);
+}
+function changeColorModeDark() {
+    document.querySelector("header .layer").style.backgroundColor="#121212";
+    document.querySelector(".form-control").style.backgroundColor="#121212";
+    document.querySelector("#today").style.backgroundColor="#161616";
+    document.querySelector("#today").style.color="white";
+    Array.from(document.querySelectorAll("h2")).forEach(e => {e.style.color="white";});
+    Array.from( document.querySelectorAll("header .layer .forecast-table .forecast")).forEach(e => {e.style.color="white";e.style.backgroundColor="#161616"});
+    hideItem(darkModeBtn);
+    showHiddenItem(lightModeBtn);
+}
 function getDayNAme(args) {
     switch(args.getDay()){
-        case 0:
+        case 0                                        : 
             return "Sunday";
-        case 1:
+        case 1                                        : 
             return "Monday";
-        case 2:
+        case 2                                        : 
             return "Tuesday";
-        case 3:
+        case 3                                        : 
             return "Wenesday";
-        case 4:
+        case 4                                        : 
             return "Thursday";
-        case 5:
+        case 5                                        : 
             return "Friday";
-        case 6:
+        case 6                                        : 
             return "Saturday";
     }
 }
 function getMonthName(args) {
-    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const months                                      = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     return months[args.getMonth()];
 }
 function getWindDirection(args) {
     switch(args){
-        case "N":
+        case "N"                                      : 
             return "North"
-        case "NNE":
+        case "NNE"                                    : 
             return "North-East"
-        case "NE":
+        case "NE"                                     : 
             return "North-NorthEast"
-        case "ENE":
+        case "ENE"                                    : 
             return "East-NorthEast"
-        case "E":
+        case "E"                                      : 
             return "East"
-        case "ESEE":
+        case "ESEE"                                   : 
             return "East-SouthEast"
-        case "SE":
+        case "SE"                                     : 
             return "South-East"
-        case "SSE":
+        case "SSE"                                    : 
             return "South-SouthEast"
-        case "S":
+        case "S"                                      : 
             return "South"
-        case "SSW":
+        case "SSW"                                    : 
             return "South-SouthWest"
-        case "SW":
+        case "SW"                                     : 
             return "South-West"
-        case "WSW":
+        case "WSW"                                    : 
             return "West-SouthWest"
-        case "W":
+        case "W"                                      : 
             return "West"
-        case "WNW":
+        case "WNW"                                    : 
             return "West-West"
-        case "NW":
+        case "NW"                                     : 
             return "North-West"
-        case "NNW":
+        case "NNW"                                    : 
             return "North-NorthWest"
     }
 }
-//Functions
-async function getforecast(location) {
-    // loc?loc:"cairo";
-    
-    let res = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=3a76dfdfbf894d8f973101128231802&q=${location}&days=3&aqi=no`);
+async function getGeoCode(location){
+    let res                                           = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=5&appid=40eeb95d0c3ff14a5e12d14a938e0f33`);
     if (res.ok && 400 != res.status) {
-        intitial=location;
-    console.log(intitial);
-
-    let finalRes = await res.json();
+        intitial                                      = location;
+    let finalRes                                      = await res.json();
+    let lat                                           = finalRes[0].lat;
+    let lon                                           = finalRes[0].lon;
+    cuurrentLocation.innerText                        = `${finalRes[0].name}`;
+    getforecast(lat,lon);
+}
+}
+//Functions
+async function getforecast(lat,lon) {
+    let res                                           = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=40eeb95d0c3ff14a5e12d14a938e0f33&units=metric`);
+    if (res.ok && 400 != res.status) {
+        intitial                                      = location;
+    let finalRes                                      = await res.json();
 // TODAY 
-    let d = new Date(finalRes.forecast.forecastday[0].date);
-    todayName.innerText=`${getDayNAme(d)},`;
-    todayDate.innerText=`${d.getDate()} ${getMonthName(d)}`;
-    cuurrentLocation.innerText=`${finalRes.location.name}`;
-    todayTemp.innerHTML=`${finalRes.current.temp_c}<sup>o</sup>C`;
-    // todayIcon.setAttribute("src",`${finalRes.current.condition.icon}`);
-    todayFeels.innerText=`${finalRes.current.condition.text}`;
-    todayHumidity.innerHTML=`${finalRes.current.humidity}`;
-    todayWindSpeed.innerHTML=` ${finalRes.current.wind_kph}`;
-    // todayWindDirection.innerHTML=`<img  src="../images/icon-compass.png" alt="icon-compass"> ${getWindDirection(finalRes.current.wind_dir)}`;
-// Hourly
-// nextHour.innerText=`${((finalRes.current.last_updated).getHours())++}`;
-let temp=new Date((finalRes.current.last_updated).toLocaleString());
-nextHour.innerText=`${(temp.getHours())+1}:00`;
-nextHourIcon.setAttribute("src",`${finalRes.forecast.forecastday[0].hour[((temp.getHours())+1)].condition.icon}`);
-nextHourTemp.innerHTML=`${finalRes.forecast.forecastday[0].hour[((temp.getHours())+1)].temp_c}<sup>oC</sup>`;
-nextHourTempFeels.innerText=`${finalRes.forecast.forecastday[0].hour[((temp.getHours())+1)].feelslike_c}`;
-// console.log(finalRes.forecast.forecastday[0].hour[((temp.getHours())+1)].condition.icon);
-// secondHour
-secondHour.innerText=`${(temp.getHours())+2}:00`;
-secondHourIcon.setAttribute("src",`${finalRes.forecast.forecastday[0].hour[((temp.getHours())+2)].condition.icon}`);
-secondHourTemp.innerHTML=`${finalRes.forecast.forecastday[0].hour[((temp.getHours())+2)].temp_c}<sup>o</sup>C`;
-secondHourTempFeels.innerText=`${finalRes.forecast.forecastday[0].hour[((temp.getHours())+2)].feelslike_c}`;
-// thirdHour
-thirdHour.innerText=`${(temp.getHours())+3}:00`;
-thirdHourIcon.setAttribute("src",`${finalRes.forecast.forecastday[0].hour[((temp.getHours())+3)].condition.icon}`);
-thirdHourTemp.innerHTML=`${finalRes.forecast.forecastday[0].hour[((temp.getHours())+3)].temp_c}<sup>o</sup>C`;
-thirdHourTempFeels.innerText=`${finalRes.forecast.forecastday[0].hour[((temp.getHours())+3)].feelslike_c}`;
-// fourthHour
-fourthHour.innerText=`${(temp.getHours())+4}:00`;
-fourthHourIcon.setAttribute("src",`${finalRes.forecast.forecastday[0].hour[((temp.getHours())+4)].condition.icon}`);
-fourthHourTemp.innerHTML=`${finalRes.forecast.forecastday[0].hour[((temp.getHours())+4)].temp_c}<sup>o</sup>C`;
-fourthHourTempFeels.innerText=`${finalRes.forecast.forecastday[0].hour[((temp.getHours())+4)].feelslike_c}`;
-// fifthHour
-fifthHour.innerText=`${(temp.getHours())+5}:00`;
-fifthHourIcon.setAttribute("src",`${finalRes.forecast.forecastday[0].hour[((temp.getHours())+5)].condition.icon}`);
-fifthHourTemp.innerHTML=`${finalRes.forecast.forecastday[0].hour[((temp.getHours())+5)].temp_c}<sup>o</sup>C`;
-fifthHourTempFeels.innerText=`${finalRes.forecast.forecastday[0].hour[((temp.getHours())+5)].feelslike_c}`;
-// sixthHour
-sixthHour.innerText=`${(temp.getHours())+6}:00`;
-sixthHourIcon.setAttribute("src",`${finalRes.forecast.forecastday[0].hour[((temp.getHours())+6)].condition.icon}`);
-sixthHourTemp.innerHTML=`${finalRes.forecast.forecastday[0].hour[((temp.getHours())+6)].temp_c}<sup>o</sup>C`;
-sixthHourTempFeels.innerText=`${finalRes.forecast.forecastday[0].hour[((temp.getHours())+6)].feelslike_c}`;
-// TOMORROW
-    // let d1 = finalRes.forecast.forecastday[1];
-    // let tomorrow = new Date(d1.date);
-    // tomorrowName.innerText=`${getDayNAme(tomorrow)}`;
-    // tomorrowIcon.setAttribute("src",`${d1.day.condition.icon}`);
-    // tomorrowTemp.innerHTML=`${d1.day.maxtemp_c}<sup>o</sup>C`;
-    // tomorrowSmallTemp.innerHTML=`${d1.day.mintemp_c}<sup>o</sup>`;
-    // tomorrowFeels.innerText=`${d1.day.condition.text}`;
+    let d                                             = new Date();
+    todayName.innerText                               = `${getDayNAme(d)},`;
+    todayDate.innerText                               = ` ${getMonthName(d)} ${d.getDate()}`;
+    todayTemp.innerHTML                               = `${finalRes.daily[0].temp.max}<sup>o</sup>C`;
+    todayFeels.innerText                              = `${finalRes.daily[0].weather[0].description}`;
+    let currentHours                                  = d.getHours();
+    currentHours                                      = ("0"+currentHours).slice(-2);
+    let currentMinutes                                = d.getMinutes();
+    currentMinutes                                    = ("0"+currentMinutes).slice(-2);
+    lastRefresh.innerText                             = `${currentHours}:${currentMinutes}`;
+    let uvi                                           = Math.ceil(finalRes.daily[0].uvi);
+    let uviVal                                        = '#uv'+ uvi.toString()
+    let uvi2                                          = document.querySelector(uviVal).style.color="yellow"
+    todayWindSpeed.innerText                          = `${finalRes.daily[0].wind_speed}`
+    const secSunrise                                  = `${finalRes.daily[0].sunrise}`;
+    let date                                          = new Date(secSunrise * 1000);
+    const timestrSunrise                              = date.toLocaleTimeString();
+    const sunrise                                     = document.querySelector("#sunrise").innerText=`${timestrSunrise}`;
+    const secSunset                                   = `${finalRes.daily[0].sunset}`;
+    date                                              = new Date(secSunset * 1000);
+    const timestrSunset                               = date.toLocaleTimeString();
+    const sunset                                      = document.querySelector("#sunset").innerText=`${timestrSunset}`;
+    const visibility                                  = document.querySelector("#visibility");
+    visibility.innerText                              = `${finalRes.current.visibility/1000}`
+// // TOMORROW
+let d1                                                = new Date(d);
+d1.setDate(d1.getDate()+1)
+    tomorrow.innerText                                = `${getDayNAme(d1)}`;
+    tomorrowTemp.innerHTML                            = `${finalRes.daily[1].temp.max}<sup>o</sup>C`;
+    tomorrowTempFeels.innerText                       = `${finalRes.daily[1].feels_like.day}`;
 //After Tommorrow
-    // let d2 = finalRes.forecast.forecastday[2];
-    // let dayAfterTommorrow = new Date(d2.date);
-    // dayAfterTommorrowName.innerText=`${getDayNAme(dayAfterTommorrow)}`;
-    // dayAfterTommorrowIcon.setAttribute("src",`${d2.day.condition.icon}`);
-    // dayAfterTommorrowTemp.innerHTML=`${d2.day.maxtemp_c}<sup>o</sup>C`;
-    // dayAfterTommorrowSmallTemp.innerHTML=`${d2.day.mintemp_c}<sup>o</sup>`;
-    // dayAfterTommorrowFeels.innerText=`${d2.day.condition.text}`;
-    // console.log(d2.day.condition.text,"day2"); 
+let d2                                                = new Date(d1);
+d2.setDate(d2.getDate()+1)
+secondDay.innerText                                   = `${getDayNAme(d2)}`;
+secondDayTemp.innerHTML                               = `${finalRes.daily[2].temp.max}<sup>o</sup>C`;
+secondDayTempFeels.innerText                          = `${finalRes.daily[2].feels_like.day}`;
+ //Third Day
+let d3                                                = new Date(d2);
+d3.setDate(d3.getDate()+1)
+thirdDay.innerText                                    = `${getDayNAme(d3)}`;
+thirdDayTemp.innerHTML                                = `${finalRes.daily[3].temp.max}<sup>o</sup>C`;
+thirdDayTempFeels.innerText                           = `${finalRes.daily[3].feels_like.day}`;
+ //Fourth Day
+ let d4                                               = new Date(d3);
+ d4.setDate(d4.getDate()+1)
+ fourthDay.innerText                                  = `${getDayNAme(d4)}`;
+ fourthDayTemp.innerHTML                              = `${finalRes.daily[4].temp.max}<sup>o</sup>C`;
+ fourthDayTempFeels.innerText                         = `${finalRes.daily[4].feels_like.day}`;
+  //Fifth Day
+  let d5                                              = new Date(d4);
+  d5.setDate(d5.getDate()+1)
+  fifthDay.innerText                                  = `${getDayNAme(d5)}`;
+  fifthDayTemp.innerHTML                              = `${finalRes.daily[5].temp.max}<sup>o</sup>C`;
+  fifthDayTempFeels.innerText                         = `${finalRes.daily[5].feels_like.day}`;
+    //Sixth Day
+    let d6                                            = new Date(d5);
+    d6.setDate(d6.getDate()+1)
+    sixthDay.innerText                                = `${getDayNAme(d6)}`;
+    sixthDayTemp.innerHTML                            = `${finalRes.daily[6].temp.max}<sup>o</sup>C`;
+    sixthDayTempFeels.innerText                       = `${finalRes.daily[6].feels_like.day}`;
 }}
-getforecast(intitial);  //  intitial value
-
+getGeoCode(intitial?intitial                          : cairo);
 //Event Listeners
-// console.log(searchInput.getAttribute("Value"));
-// searchInput.setAttribute("oninput","getforecast(this.value)");  // working with no intitial value
 searchInput.addEventListener("change", function () {    // change saves the last entered location
-    getforecast(searchInput.value?searchInput.value:intitial);
+    getGeoCode(searchInput.value?searchInput.value    : cairo);
 });
 
-// (async function() {
-//     console.log(searchInput.value);
-//     await getforecast(searchInput.value)();
-// })();

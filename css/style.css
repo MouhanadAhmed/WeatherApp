@@ -13,81 +13,24 @@
 }
 body{
     background: var(--bd-color);
-    font-family: var(--font)
+    font-family: var(--font);
+    color: var(--text);
+}
+h2{
+    color: var(--text)
 }
 /*  //SECTION Helper styling End */
-/* <!------------------------------------------------------------------------------------------------------------------------------------> */
-/*  //SECTION NAvbar styling Start */
-
-nav{
-    background: transparent;
-    font-family:var(--font);
-}
-nav .container{
-    width: 77%;
-}
-nav .container a img {
-    width: 4rem;
-    height: 2.375rem;
-    margin-right: 1rem;
-}
-nav .container .logo-text h5{
-    font-size: x-small;
-    font-weight: lighter;
-}
-.navbar-nav .nav-link{
-    color: var(--text);
-    border: 2px solid transparent;
-    font-size: 00.9rem;
-    text-align: center;
-    transition: all 0.3s;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -ms-transition: all 0.3s;
-    -o-transition: all 0.3s;
-}
-nav .navbar .nav-link.active, .navbar-nav .show>.nav-link,.navbar-nav .nav-link:hover,.nav-link.active {
-    border: 2px solid var(--main-color);
-    border-radius: 30px;
-    color: var(--main-color) !important;
-    -webkit-border-radius: 30px;
-    -moz-border-radius: 30px;
-    -ms-border-radius: 30px;
-    -o-border-radius: 30px;
-}
-.navbar-toggler-icon {
-color: var(--text);
-}
-/*  //!SECTION NAvbar styling End */
 /* <!------------------------------------------------------------------------------------------------------------------------------------> */
 /*  //SECTION Header styling Start */
 
 header .layer{
     background-color: var(--bd-color);
     color: white;
-    /* background-image: url(../images/banner.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    
-    margin-bottom: 3rem;
-    background-position: 0% 100%; 
-    min-height: 750px;
-    height: 90vh;
-    z-index: -2; */
-}
-/* header .layer::after{
-    content: "";
-    position: absolute;
-    display: block;
-    background: var(--bd-color);
-    max-height: 41%;
     width: 100%;
-    bottom: 0;
-    z-index: ;
-} */
-header .layer .container .find-location #searchInput{
-    position: relative;
-    background-color: #121212 !important;
+}
+.form-control::placeholder{
+    color: var(--secondary-text) !important;
+
 }
 header .layer .container input{
     width: 89%;
@@ -102,7 +45,7 @@ header .layer .container input{
 box-shadow: none;
 }
 header .layer .container input::placeholder {
-    color: var(--secondary-text);
+    color: var(--text) !important;
     font-size: 0.8rem;
 }
 header .layer .container .find-location #searchIcon{
@@ -121,26 +64,18 @@ header .layer .container button{
 }
 header .layer .forecast-table .container{
     color: var(--secondary-text);
-    /* width: 78%; */
-    /* padding-left: 2.5rem; */
     margin: auto;
     display: flex;
     flex-wrap: wrap;
-    /* overflow: hidden; */
-
-
 }
 header .layer .forecast-table .container .row {
     min-width: 100%;
-    /* overflow: hidden; */
-
 }
 #today{
     background-color: var(--secondary-bg);
     margin-right: 1rem;
 }
 header .layer .forecast-table .forecast-container{
-    /* background: var(--secondary-bg); */
     color: #bfc1c8;
     width: 90%;
     margin: auto;
@@ -153,32 +88,37 @@ header .layer .forecast-table .forecast-container{
 }
 header .layer .forecast-table .forecast {
 font-size: 0.9rem;
-background-color: var(--secondary-bg);
+color: white;
+text-align: center;
 }
-header .layer .forecast-table .forecast:nth-child(even) {
-    /* background-color:var(--bd-color); */
-    
+header .layer .forecast-table .animate{
+    transition-property: all;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-duration: .15s;
+}
+
+header .layer .forecast-table .animate:hover{
+    transform: translateY(1.25rem);
 }
 #todayWindDirection{
     font-size: 0.7rem;
+}
+#todayHumidity{
+text-align: center;
+
 }
 .forecast-container .forecast .today .location {
     font-size: 1.2857142857em;
     font-weight: 400;
 }
 .forecast-container .forecast .forecast-content .degree {
-    /* font-size: 24px; */
     font-size: 1rem;
-    color: white;
     font-weight: 200;
 }
 .forecast-container .forecast.today .degree .num {
     font-size: 5.5rem;
     line-height: 5rem;
     font-weight: 300;
-
-    /* font-size: 6.4285714286rem; */
-    /* margin-right: 10px; */
     font-family: var(--font);
 }
 .forecast-container .forecast.today .degree .num  sup{
@@ -194,116 +134,7 @@ header .layer .forecast-table .forecast:nth-child(even) {
     color: var(--main-color);
     font-size: 0.9rem;
 }
-.small-cloud {
-    -webkit-animation: float 8s linear infinite;
-    animation: float 8s linear infinite;
-}
-@media (max-width: 400px){
-    header .layer .container .find-location #findBtn{
-        top:5px;
-        right:1.5em;
-        bottom: 5px;
-    }
-    footer  .container .row button{
-        /* width:10%; */
-        right:3.6em  !important;
-    }
-}
-@media (max-width: 768px) and (min-width: 401px){
-    header .layer .container .find-location #findBtn{
-        right:2.4em;
-    }
-    footer  .container .row button{
-        right:5em  !important;
-    }
-}
-@media (max-width: 990px) and (min-width: 769px){
-    header .layer .container .find-location #findBtn{
-        right:3.0em;
-    }
-    footer  .container .row button{
-        right:4.8em  !important;
-    }
-}
-@media (max-width: 1200px) and (min-width: 991px){
-    header .layer .container .find-location #findBtn{
-        right:3.8em;
-    }
-    footer  .container .row button{
-        right:6.0em  !important;
-    }
-}
-@media (min-width: 1301px){
-    header .layer .container .find-location #findBtn{
-        right:4.7em;
-    }
-    footer  .container .row button{
-        right:7.0em  !important;
-    }
-}
-@media (min-width: 1401px){
-    header .layer .container .find-location #findBtn{
-        right:5.7em;
-    }
-    footer  .container .row button{
-        right:7.7em  !important;
-    }
-}
+
 /*  //!SECTION Header styling End */
 /* <!------------------------------------------------------------------------------------------------------------------------------------> */
-/*  //SECTION Footer styling End */
-.site-footer {
-    background: #262936;
-    padding: 50px 0;
-}
-footer  .container .row input{
-    width: 89%;
-    background-color: var(--bd-color);
-    caret-color:var(--text);
-    color:var(--text);
-    font-size: 0.8rem;
-    /* margin: auto; */
 
-}
-.form-control:focus {
-box-shadow: none;
-}
-footer  .container .row input::placeholder {
-    color: var(--secondary-text);
-    font-size: 0.8rem;
-}
-footer .container .row .col-md-8 {
-    position: relative;
-}
-footer  .container .row .col-md-8 button{
-    position: absolute;
-    background-color: var(--main-color);
-    top:5px;
-    right:58px;
-    bottom: 5px;
-    padding: 0 2.5rem;
-    font-size: 0.9rem;
-}
-footer p {
-    color: var(--secondary-text);
-}
-footer .container .row .social-links a i{
-    width: 40px;
-    height: 40px;
-    display: inline-block;
-    border-radius: 50%;
-    background: #1e202b;
-    color: var(--main-color);
-    text-align: center;
-    line-height: 1.8;
-    -webkit-transition: 0.3s ease;
-    transition: 0.3s ease;
-    font-size: 1rem;
-    font-size: 1.4285714286em;
-}
-footer .container .row .social-links a i:hover{
-    background: var(--main-color);
-    color: var(--text);
-}
-/*  //!SECTION Footer styling End */
-/* <!------------------------------------------------------------------------------------------------------------------------------------> */
