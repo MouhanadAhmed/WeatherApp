@@ -168,7 +168,7 @@ async function getforecast(lat,lon) {
     let d                                             = new Date();
     todayName.innerText                               = `${getDayNAme(d)},`;
     todayDate.innerText                               = ` ${getMonthName(d)} ${d.getDate()}`;
-    todayTemp.innerHTML                               = `${finalRes.daily[0].temp.max}<sup>o</sup>C`;
+    todayTemp.innerHTML                               = `${Math.ceil(finalRes.daily[0].temp.max)}<sup>o</sup>C`;
     todayFeels.innerText                              = `${finalRes.daily[0].weather[0].description}`;
     let currentHours                                  = d.getHours();
     currentHours                                      = ("0"+currentHours).slice(-2);
@@ -193,38 +193,38 @@ async function getforecast(lat,lon) {
 let d1                                                = new Date(d);
 d1.setDate(d1.getDate()+1)
     tomorrow.innerText                                = `${getDayNAme(d1)}`;
-    tomorrowTemp.innerHTML                            = `${finalRes.daily[1].temp.max}<sup>o</sup>C`;
-    tomorrowTempFeels.innerText                       = `${finalRes.daily[1].feels_like.day}`;
+    tomorrowTemp.innerHTML                            = `${Math.ceil(finalRes.daily[1].temp.max)}<sup>o</sup>C`;
+    tomorrowTempFeels.innerText                       = `${Math.ceil(finalRes.daily[1].feels_like.day)}`;
 //After Tommorrow
 let d2                                                = new Date(d1);
 d2.setDate(d2.getDate()+1)
 secondDay.innerText                                   = `${getDayNAme(d2)}`;
-secondDayTemp.innerHTML                               = `${finalRes.daily[2].temp.max}<sup>o</sup>C`;
-secondDayTempFeels.innerText                          = `${finalRes.daily[2].feels_like.day}`;
+secondDayTemp.innerHTML                               = `${Math.ceil(finalRes.daily[2].temp.max)}<sup>o</sup>C`;
+secondDayTempFeels.innerText                          = `${Math.ceil(finalRes.daily[2].feels_like.day)}`;
  //Third Day
 let d3                                                = new Date(d2);
 d3.setDate(d3.getDate()+1)
 thirdDay.innerText                                    = `${getDayNAme(d3)}`;
-thirdDayTemp.innerHTML                                = `${finalRes.daily[3].temp.max}<sup>o</sup>C`;
-thirdDayTempFeels.innerText                           = `${finalRes.daily[3].feels_like.day}`;
+thirdDayTemp.innerHTML                                = `${Math.ceil(finalRes.daily[3].temp.max)}<sup>o</sup>C`;
+thirdDayTempFeels.innerText                           = `${Math.ceil(finalRes.daily[3].feels_like.day)}`;
  //Fourth Day
  let d4                                               = new Date(d3);
  d4.setDate(d4.getDate()+1)
  fourthDay.innerText                                  = `${getDayNAme(d4)}`;
- fourthDayTemp.innerHTML                              = `${finalRes.daily[4].temp.max}<sup>o</sup>C`;
- fourthDayTempFeels.innerText                         = `${finalRes.daily[4].feels_like.day}`;
+ fourthDayTemp.innerHTML                              = `${Math.ceil(finalRes.daily[4].temp.max)}<sup>o</sup>C`;
+ fourthDayTempFeels.innerText                         = `${Math.ceil(finalRes.daily[4].feels_like.day)}`;
   //Fifth Day
   let d5                                              = new Date(d4);
   d5.setDate(d5.getDate()+1)
   fifthDay.innerText                                  = `${getDayNAme(d5)}`;
-  fifthDayTemp.innerHTML                              = `${finalRes.daily[5].temp.max}<sup>o</sup>C`;
-  fifthDayTempFeels.innerText                         = `${finalRes.daily[5].feels_like.day}`;
+  fifthDayTemp.innerHTML                              = `${Math.ceil(finalRes.daily[5].temp.max)}<sup>o</sup>C`;
+  fifthDayTempFeels.innerText                         = `${Math.ceil(finalRes.daily[5].feels_like.day)}`;
     //Sixth Day
     let d6                                            = new Date(d5);
     d6.setDate(d6.getDate()+1)
     sixthDay.innerText                                = `${getDayNAme(d6)}`;
-    sixthDayTemp.innerHTML                            = `${finalRes.daily[6].temp.max}<sup>o</sup>C`;
-    sixthDayTempFeels.innerText                       = `${finalRes.daily[6].feels_like.day}`;
+    sixthDayTemp.innerHTML                            = `${Math.ceil(finalRes.daily[6].temp.max)}<sup>o</sup>C`;
+    sixthDayTempFeels.innerText                       = `${Math.ceil(finalRes.daily[6].feels_like.day)}`;
 }}
 getGeoCode(intitial?intitial                          : cairo);
 //Event Listeners

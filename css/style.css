@@ -27,6 +27,7 @@ header .layer{
     background-color: var(--bd-color);
     color: white;
     width: 100%;
+    overflow: hidden;
 }
 .form-control::placeholder{
     color: var(--secondary-text) !important;
